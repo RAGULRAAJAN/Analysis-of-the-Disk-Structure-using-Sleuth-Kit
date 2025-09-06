@@ -71,33 +71,22 @@ icat.exe -o 2048 C:\forensics\disk.dd 6 > C:\forensics\image.jpg
 ```
 ## OUTPUT:
 Disk Structure Analysis Results
-![WhatsApp Image 2025-08-13 at 09 18 42_f1739bee](https://github.com/user-attachments/assets/1fd99c6a-91f6-4789-b74b-e7b07c6d320f)
+
+<img width="1032" height="257" alt="Screenshot 2025-08-17 184707" src="https://github.com/user-attachments/assets/9e5de96d-d861-42c6-b6fd-681c3b786080" />
+<img width="1033" height="487" alt="Screenshot 2025-08-17 184723" src="https://github.com/user-attachments/assets/21ed3a11-6f22-4230-8f56-b3c88c996c32" />
+<img width="674" height="313" alt="Screenshot 2025-08-17 184735" src="https://github.com/user-attachments/assets/07a27f32-9e3b-4d12-9c50-5cd321bdd733" />
+<img width="1032" height="648" alt="Screenshot 2025-08-17 184744" src="https://github.com/user-attachments/assets/d3d6e8f8-6c05-44bc-aa7f-3ce0a41bf0ba" />
+
+<img width="722" height="303" alt="Screenshot 2025-08-17 184757" src="https://github.com/user-attachments/assets/faaef342-f455-40ab-b1bb-d1e034bdc5c3" />
+<img width="635" height="480" alt="Screenshot 2025-08-17 184808" src="https://github.com/user-attachments/assets/d30b7bbb-e23c-41bd-bb48-648e376d5d32" />
 
 
 
-## Create Disk
-<img width="642" height="500" alt="Screenshot 2025-08-15 204233" src="https://github.com/user-attachments/assets/d28aee7e-cf2d-4119-a42b-621030809535" />
 
 
 
-## mmls
-
-```
-mmls disk.dd
-```
-
-## fls
-
-```
-fls -f fat -o 0 disk.dd
-```
-
-<img width="635" height="493" alt="Screenshot 2025-08-15 205431" src="https://github.com/user-attachments/assets/e132eeea-ed29-480d-ae2b-2cffe47c4285" />
 
 
-<img width="628" height="494" alt="Screenshot 2025-08-15 204732" src="https://github.com/user-attachments/assets/4fcfbc62-20c5-43dc-aba7-7e66b4076c99" />
-
-<img width="631" height="490" alt="Screenshot 2025-08-15 205400" src="https://github.com/user-attachments/assets/b0fefeb9-916f-4e52-bb58-89ab233fa4d1" />
 
 
 ## RESULT:
