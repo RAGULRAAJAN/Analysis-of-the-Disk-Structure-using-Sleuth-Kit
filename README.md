@@ -3,65 +3,82 @@
 ### Name : RAGUL RAAJAN T
 ### Reg.No : 212223100043
 
+# Analysis-of-the-Disk-Structure-using-Sleuth-Kit
 ## AIM:
 To analyze the disk structure of a given disk image using Sleuth Kit tools in Kali Linux.
 
+## REQUIREMENTS
+- **Operating System**: Windows 10/11 or Kali Linux
+- **Tools**:  
+  - [The Sleuth Kit for Windows](https://sleuthkit.org/)  
+  - Optional GUI: [Autopsy Forensic Browser](https://www.autopsy.com/)
+- **Test Data**: Disk image file (`disk.dd`, `disk.img`, `.E01`)
+
+## ARCHITECTURE DIAGRAM
+```mermaid
+flowchart TD
+    A[Disk Image / Physical Disk] --> B[mmls - Partition Analysis]
+    B --> C[fsstat - File System Metadata]
+    C --> D[fls - File Listing]
+    D --> E[icat - File Recovery]
+    E --> F[Recovered Data / Metadata Report]
+```
 ## DESIGN STEPS:
-## Step 1:
-Obtain or create a disk image file (e.g., disk.dd) to analyze. Open the terminal in Kali Linux.
+### Step 1:
+- Obtain or create a disk image file (e.g., disk.dd) to analyze.
+- Open the terminal in Kali Linux.
 
-## Step 2:
-Use Sleuth Kit tools like mmls, fsstat, and fls to examine the partition layout, file system details, and file listing.
-
-## Step 3:
-Interpret the output of the tools to understand the disk structure, including partitions, sectors, and files.
+### Step 2:
+Use Sleuth Kit tools like:
+ - mmls → Examine the partition layout.
+ - fsstat → View file system details.
+ - fls → Get file listing.
+ - icat → Recover files using inode numbers.
+### Step 3:
+Interpret the output to understand:
+ - Partition table layout
+ - File system metadata (block size, creation time, etc.)
+ - Deleted and allocated files
+ - Inode-based file recovery
 
 ## PROGRAM:
 Sleuth Kit Disk Analysis Commands
-
-✅ Option 1: Create a Sample Disk Image (for Testing)
-
-Let’s create a 10MB blank disk image and simulate file system activity:
-
-```
-cd ~/Downloads
-
-# Step 1: Create an empty disk image
-dd if=/dev/zero of=disk.dd bs=1M count=10
-
-# Step 2: Format it with a file system (like FAT32)
-mkfs.vfat disk.dd
-```
-
-## OUTPUT:
-<img width="1195" height="427" alt="Screenshot 2025-09-06 165424" src="https://github.com/user-attachments/assets/03fc9889-d66e-483f-aa62-504ce2a78641" />
-
-
-
-
-## Create Disk
-
-<img width="1191" height="643" alt="image" src="https://github.com/user-attachments/assets/b0a353a9-7c2b-4cc9-89ed-c3a5edc63f1a" />
-
-
-
-## mmls
-
-```
+### Partition Analysis
+```bash
 mmls disk.dd
 ```
-
-## fls
-
+### File System Metadata
+```bash
+fsstat -o 2048 disk.dd
 ```
-fls -f fat -o 0 disk.dd
+### File Listing
+```bash
+fls -o 2048 disk.dd
 ```
+### File Recovery
+```bash
+icat -o 2048 disk.dd 4 > recovered_file.txt
+```
+- Recovers the file associated with inode 4.
+## SAMPLE WORKFLOW (Windows)
+```bash
+# Step 1: View partitions
+mmls.exe C:\forensics\disk.dd
 
-<img width="1187" height="245" alt="image" src="https://github.com/user-attachments/assets/03045454-505f-456a-a2cc-09283849d985" />
+# Step 2: View file system details
+fsstat.exe -o 2048 C:\forensics\disk.dd
 
-<img width="1170" height="694" alt="image" src="https://github.com/user-attachments/assets/5f1fa5e2-3099-4309-a583-0ebe994a7d2e" />
+# Step 3: List files
+fls.exe -r -o 2048 C:\forensics\disk.dd
 
-<img width="1186" height="585" alt="image" src="https://github.com/user-attachments/assets/9dec2166-4fee-417f-a969-1cdcb9f46b81" />
+# Step 4: Recover a file
+icat.exe -o 2048 C:\forensics\disk.dd 6 > C:\forensics\image.jpg
+```
+## OUTPUT:
+Disk Structure Analysis Results
+<img width="1631" height="887" alt="Screenshot (167)" src="https://github.com/user-attachments/assets/ea8da937-a8ad-406e-a5ae-5961735bf811" />
+<img width="1625" height="903" alt="Screenshot (168)" src="https://github.com/user-attachments/assets/2720555f-39de-4385-953a-e94975a6279d" />
+
 
 
 ## RESULT:
